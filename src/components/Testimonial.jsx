@@ -1,0 +1,119 @@
+// import React, { useState } from 'react';
+
+
+import React, { useState } from "react";
+import Costumer1 from '../assets/costumer1.png';
+import Costumer2 from '../assets/costumer2.png';
+import Costumer3 from '../assets/costumer3.png';
+import Costumer4 from '../assets/costumer4.png';
+
+const reviews = [
+  {
+    id: 1,
+    name: "Ali Khan",
+    image: Costumer1,
+    stars: 5,
+    content: `I have been using this product for over six months now, and I am truly impressed by the quality and performance. From the moment I placed the order, the customer service team was very responsive and helpful, answering all my questions promptly. The product itself exceeded my expectations in terms of durability and ease of use. It has made my daily tasks much easier and more enjoyable. I highly recommend this to anyone looking for a reliable and high-quality solution. I will definitely be purchasing from this brand again in the future!`,
+  },
+  {
+    id: 2,
+    name: "Sara Ahmed",
+    image: Costumer2,
+    stars: 4,
+    content: `Overall, I had a very positive experience with this company. The delivery process was smooth and quick, arriving earlier than expected. The packaging was secure, and the product looked exactly as described on the website. The only minor downside was that the instructions could have been a bit clearer, but I managed to figure things out with a little trial and error. The product performs well and meets my needs perfectly. I’m satisfied with my purchase and would consider buying other products from this brand.`,
+  },
+  {
+    id: 3,
+    name: "Zain Malik",
+    image: Costumer3,
+    stars: 5,
+    content: `From start to finish, my experience with this company was exceptional. The attention to detail in the product design is evident, and the quality is unmatched. I especially appreciate how the company values customer feedback and continuously improves their offerings. The product works flawlessly, and the after-sales support was very helpful when I had a question about usage. This level of professionalism and dedication to customer satisfaction is rare these days. I wholeheartedly recommend this product to anyone looking for something dependable and well-crafted.`,
+  },
+  {
+    id: 4,
+    name: "Ayesha Iqbal",
+    image: Costumer4,
+    stars: 3,
+    content: `The product itself is decent and does what it promises, but I had some issues with delivery timing, which was slower than I had hoped. Despite this, the customer support team was very understanding and provided timely updates. After receiving the product, I found it to be of good quality but not outstanding compared to some alternatives I have used before. I think there is room for improvement, especially in communication and logistics. However, I would still recommend giving it a try as the core functionality is solid and the price is reasonable.`,
+  },
+];
+
+
+const Star = ({ filled }) => (
+  <svg
+    className={`w-6 h-6 ${filled ? "text-yellow-400" : "text-gray-300"}`}
+    fill="currentColor"
+    viewBox="0 0 20 20"
+  >
+    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.959a1 1 0 00.95.69h4.165c.969 0 1.371 1.24.588 1.81l-3.37 2.448a1 1 0 00-.364 1.118l1.287 3.958c.3.921-.755 1.688-1.54 1.118l-3.37-2.448a1 1 0 00-1.175 0l-3.37 2.448c-.784.57-1.838-.197-1.54-1.118l1.287-3.958a1 1 0 00-.364-1.118L2.04 9.386c-.783-.57-.38-1.81.588-1.81h4.165a1 1 0 00.95-.69l1.286-3.959z" />
+  </svg>
+);
+
+export default function CustomerReviews() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  return (
+    <div className="max-w-7xl mx-auto p-32 bg-white ">
+      <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
+        {/* Review Content */}
+        <div className="flex-1 space-y-4">
+          <h2 className="text-3xl font-semibold text-gray-800">
+            Customer Review
+          </h2>
+          <p className="text-gray-700 text-lg leading-relaxed transition-opacity duration-500 ease-in-out">
+            {reviews[activeIndex].content}
+          </p>
+          <div className="flex items-center space-x-2">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} filled={i < reviews[activeIndex].stars} />
+            ))}
+          </div>
+          <p className="text-xl font-bold text-gray-900 mt-2">
+            - {reviews[activeIndex].name}
+          </p>
+        </div>
+
+        {/* Customer Image */}
+        <div className="flex-shrink-0">
+          <img
+            src={reviews[activeIndex].image}
+            alt={reviews[activeIndex].name}
+            className="w-40 h-40 rounded-full object-cover border-4 border-indigo-500 shadow-lg transition-transform duration-500 ease-in-out"
+          />
+        </div>
+      </div>
+
+      {/* Horizontal Scroll Selector */}
+      <div className="mt-8 overflow-x-auto no-scrollbar">
+        <div className="flex space-x-6">
+          {reviews.map((review, idx) => (
+            <button
+              key={review.id}
+              onClick={() => setActiveIndex(idx)}
+              className={`flex flex-col items-center cursor-pointer focus:outline-none transition-transform transform hover:scale-110 ${
+                idx === activeIndex ? "scale-110" : "scale-90 opacity-60"
+              }`}
+            >
+              <img
+                src={review.image}
+                alt={review.name}
+                className="w-20 h-20 rounded-full object-cover border-2 border-indigo-400"
+              />
+              <p className="mt-2 text-sm font-semibold text-gray-700">
+                {review.name}
+              </p>
+              <div className="flex mt-1">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    filled={i < review.stars}
+                  />
+                ))}
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
