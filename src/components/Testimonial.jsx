@@ -29,14 +29,7 @@ const reviews = [
     content:
       "From start to finish, my experience with this company was exceptional. The attention to detail in the product design is evident, and the quality is unmatched. I especially appreciate how the company values customer feedback and continuously improves their offerings. The product works flawlessly, and the after-sales support was very helpful when I had a question about usage. This level of professionalism and dedication to customer satisfaction is rare these days. I wholeheartedly recommend this product to anyone looking for something dependable and well-crafted.",
   },
-  {
-    id: 4,
-    name: "Ayesha Iqbal",
-    image: Costumer4,
-    stars: 3,
-    content:
-      "The product itself is decent and does what it promises, but I had some issues with delivery timing, which was slower than I had hoped. Despite this, the customer support team was very understanding and provided timely updates. After receiving the product, I found it to be of good quality but not outstanding compared to some alternatives I have used before. I think there is room for improvement, especially in communication and logistics. However, I would still recommend giving it a try as the core functionality is solid and the price is reasonable.",
-  },
+ 
 ];
 
 const Star = ({ filled }) => (
@@ -81,10 +74,9 @@ export default function CustomerReviews() {
         </div>
       </div>
 
-      {/* Horizontal Scroll Selector */}
-   {/* Horizontal Scroll Selector */}
-<div className="mt-10 overflow-x-auto md:overflow-x-visible">
-  <div className="flex gap-6 w-max md:w-full md:flex-wrap md:justify-center">
+{/* Horizontal Scroll Selector */}
+<div className="mt-10">
+  <div className="flex flex-wrap justify-center gap-6">
     {reviews.map((review, idx) => (
       <button
         key={review.id}
@@ -110,6 +102,7 @@ export default function CustomerReviews() {
     ))}
   </div>
 </div>
+
 
     </div>
   );
