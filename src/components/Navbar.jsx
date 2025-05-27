@@ -9,8 +9,8 @@ const MainNavbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   return (
-    <nav className="w-full bg-white shadow-md z-50">
-      <div className="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+<nav className="w-full bg-white shadow-md z-50 sticky top-0">
+<div className="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
 
         <div>
           <img src={avatarAli} alt="Logo" className="h-16 w-auto" />
