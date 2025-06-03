@@ -1,21 +1,9 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 import { FaChevronLeft, FaChevronRight, FaEye } from 'react-icons/fa';
-import Product1 from '../assets/product1.png';
-import Product2 from '../assets/product2.png';
-import Product3 from '../assets/product3.png';
-import Product4 from '../assets/product4.png';
-import Product5 from '../assets/product5.png';
-import Product6 from '../assets/product6.png';
+import { productsGallon } from '../constant/products';
 
-const products = [
-  { id: 1, name: 'Brighto Stain Free', price: 'Rs.12,000.00', image: Product1 },
-  { id: 2, name: 'Plastic Emulsion', price: 'Rs.12,250.00', image: Product2 },
-  { id: 3, name: 'Quick Wash Emulsion', price: 'Rs.12,500.00', image: Product3 },
-  { id: 4, name: 'Super Emulsion', price: 'Rs.15,000.00', image: Product4 },
-  { id: 5, name: 'Wall Emulsion', price: 'Rs.16,000.00', image: Product5 },
-  { id: 6, name: 'Premium Gloss Finish', price: 'Rs.17,000.00', image: Product6 },
-];
+
 
 const ProductSlider = () => {
   const scrollRef = React.useRef(null);
@@ -49,7 +37,7 @@ const ProductSlider = () => {
           ref={scrollRef}
           className="flex overflow-x-auto scroll-smooth no-scrollbar px-4 sm:px-8 space-x-4 sm:space-x-6 snap-x snap-mandatory"
         >
-          {products.map((product) => (
+          {productsGallon.map((product) => (
             <div
               key={product.id}
               onClick={() => handleClick(product.id)}
@@ -70,7 +58,6 @@ const ProductSlider = () => {
               </div>
 
               <h3 className="font-semibold text-base sm:text-lg mt-3 text-gray-900">{product.name}</h3>
-              <p className="text-[#da2a30] font-semibold text-sm mt-1">{product.price}</p>
             </div>
           ))}
         </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { FaSearch, FaBars, FaTimes } from 'react-icons/fa';
 import { MdArrowDropDown } from 'react-icons/md';
 import avatarAli from '../assets/Log.png';
@@ -7,6 +7,28 @@ import avatarAli from '../assets/Log.png';
 const MainNavbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const { pathname } = useLocation();
+
+  // Function to check if a link is active
+  const isActive = (path, exact = false) => {
+    return exact ? pathname === path : pathname.startsWith(path);
+  };
+
+  // Nav items data for cleaner code
+  const navItems = [
+    { path: '/', label: 'Home', exact: true },
+    { path: '/about', label: 'About' },
+    { path: '/services', label: 'Services' },
+    { path: '/gallery', label: 'Gallery' },
+    { path: '/contact', label: 'Contact' }
+  ];
+
+  // Product dropdown items
+  const productItems = [
+    { path: '/products/evernew', label: 'EVERNEW' },
+    { path: '/products/toplac', label: 'TOPLAC' },
+    { path: '/products/kent', label: 'KENT' }
+  ];
 
   return (
     <nav className="w-full bg-white shadow-md z-50 sticky top-0">
@@ -17,12 +39,17 @@ const MainNavbar = () => {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex gap-6 items-center font-medium text-gray-700">
-          <li className="hover:text-[#da2a30] cursor-pointer">
-            <Link to="/">Home</Link>
-          </li>
-          <li className="hover:text-[#da2a30] cursor-pointer">
-            <Link to="/about">About</Link>
-          </li>
+          {navItems.map((item) => (
+            <li key={item.path}>
+              <Link
+                to={item.path}
+                className={`hover:text-teal-200 cursor-pointer transition-colors ${isActive(item.path, item.exact) ? 'text-teal-200 font-semibold' : ''
+                  }`}
+              >
+                {item.label}
+              </Link>
+            </li>
+          ))}
 
           {/* Dropdown Products */}
           <li
@@ -30,44 +57,37 @@ const MainNavbar = () => {
             onMouseEnter={() => setDropdownOpen(true)}
             onMouseLeave={() => setDropdownOpen(false)}
           >
-            <div className="flex items-center gap-1">
+            <div className={`flex items-center gap-1 ${isActive('/products') ? 'text-teal-200 font-semibold' : ''
+              }`}>
               Products <MdArrowDropDown />
             </div>
             {dropdownOpen && (
-              <ul className="absolute top-full left-0 mt-2 w-40 bg-white border shadow-md z-20 text-sm">
-                <li className="px-4 py-2 hover:bg-blue-50">
-                  <Link to="/products/evernew">EVERNEW</Link>
-                </li>
-                <li className="px-4 py-2 hover:bg-blue-50">
-                  <Link to="/products/toplac">TOPLAC</Link>
-                </li>
-                <li className="px-4 py-2 hover:bg-blue-50">
-                  <Link to="/products/kent">KENT</Link>
-                </li>
+              <ul className="absolute top-full left-0 mt-2 w-40 bg-white border shadow-md z-20 text-sm rounded-md overflow-hidden">
+                {productItems.map((product) => (
+                  <li key={product.path}>
+                    <Link
+                      to={product.path}
+                      className={`block px-4 py-2 hover:bg-blue-50 ${isActive(product.path) ? 'bg-blue-50 text-teal-200' : ''
+                        }`}
+                    >
+                      {product.label}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             )}
           </li>
 
-          <li className="hover:text-[#da2a30] cursor-pointer">
-            <Link to="/services">Services</Link>
-          </li>
-          <li className="hover:text-[#da2a30] cursor-pointer">
-            <Link to="/gallery">Gallery</Link>
-          </li>
-          <li className="hover:text-[#da2a30] cursor-pointer">
-            <Link to="/contact">Contact</Link>
-          </li>
+          {/* Search Input */}
+          <div className="flex items-center border rounded-md px-2 py-1">
+            <input
+              type="text"
+              placeholder="Search..."
+              className="outline-none text-sm px-1 w-32"
+            />
+            <FaSearch className="text-gray-500 ml-1" />
+          </div>
         </ul>
-
-        {/* Search Input */}
-        <div className="hidden md:flex items-center border rounded-md px-2 py-1">
-          <input
-            type="text"
-            placeholder="Search..."
-            className="outline-none text-sm px-1"
-          />
-          <FaSearch className="text-gray-500 ml-1" />
-        </div>
 
         {/* Mobile Menu Button */}
         <div className="md:hidden">
@@ -81,42 +101,43 @@ const MainNavbar = () => {
       {mobileMenuOpen && (
         <div className="md:hidden bg-white px-4 pb-4 shadow">
           <ul className="flex flex-col gap-3 text-gray-700 font-medium">
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
+            {navItems.map((item) => (
+              <li key={item.path}>
+                <Link
+                  to={item.path}
+                  className={`block py-1 ${isActive(item.path, item.exact) ? 'text-teal-200 font-semibold' : ''
+                    }`}
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+
             <div>
               <div
-                className="flex items-center gap-1 cursor-pointer"
+                className={`flex items-center gap-1 py-1 cursor-pointer ${isActive('/products') ? 'text-teal-200 font-semibold' : ''
+                  }`}
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               >
                 Products <MdArrowDropDown />
               </div>
               {dropdownOpen && (
-                <ul className="ml-4 mt-2 text-sm">
-                  <li className="py-1">
-                    <Link to="/products/evernew">EVERNEW</Link>
-                  </li>
-                  <li className="py-1">
-                    <Link to="/products/toplac">TOPLAC</Link>
-                  </li>
-                  <li className="py-1">
-                    <Link to="/products/kent">KENT</Link>
-                  </li>
+                <ul className="ml-4 mt-1 text-sm space-y-1">
+                  {productItems.map((product) => (
+                    <li key={product.path}>
+                      <Link
+                        to={product.path}
+                        className={`block py-1 ${isActive(product.path) ? 'text-teal-200' : ''
+                          }`}
+                      >
+                        {product.label}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               )}
             </div>
-            <li>
-              <Link to="/services">Services</Link>
-            </li>
-            <li>
-              <Link to="/gallery">Gallery</Link>
-            </li>
-            <li>
-              <Link to="/contact">Contact</Link>
-            </li>
+
             <div className="flex items-center border rounded-md px-2 py-1 mt-2">
               <input
                 type="text"

@@ -46,11 +46,11 @@ export default function HeroSection() {
     <div className="w-full bg-gradient-to-br from-orange-50 to-pink-50 px-4 py-8 lg:py-16">
       <div className="max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-          
+
           {/* Content First Always */}
           <div className="space-y-6 lg:space-y-8 order-1 lg:order-1">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-orange-100 text-orange-800 px-4 py-2 rounded-full text-sm font-medium">
+            <div className="inline-flex items-center gap-2 bg-teal-50 text-black px-4 py-2 rounded-full text-sm font-medium">
               <Sparkles className="w-4 h-4" />
               Premium Art-Grade Paints
             </div>
@@ -64,7 +64,6 @@ export default function HeroSection() {
                 <br />
                 <span className="relative">
                   Timeless Quality
-                  <Sparkles className="absolute -top-2 -right-8 w-6 h-6 text-orange-400" />
                   You Trust
                 </span>
               </h1>
@@ -78,7 +77,7 @@ export default function HeroSection() {
 
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-[#bb2429] hover:bg-[#ff5358] text-white px-8 py-4 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors">
+              <button className="bg-teal-500 hover:bg-teal-600 text-white px-8 py-4 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors">
                 Shop Premium Colors
                 <ArrowRight className="w-5 h-5" />
               </button>

@@ -14,6 +14,7 @@ import Footer from './components/Footer';
 
 import ProductDetail from './components/ProductDetails.jsx'; // Naya component, product detail ke liye
 
+
 function App() {
   return (
     <BrowserRouter>
