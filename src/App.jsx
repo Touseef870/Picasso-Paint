@@ -11,6 +11,13 @@ import BannerSection from './components/BannerSection'
 import Testimonial from './components/Testimonial';
 import FAQ from './components/FAQ.jsx'
 import Footer from './components/Footer';
+import Contacts from './components/Contact.jsx'
+import AboutPage from './pages/About/about.jsx';
+import Service from './pages/Service/Service.jsx'
+import Contact from './pages/Contact/Conact.jsx';
+import Gallery from './pages/Gallery/Gallery.jsx';
+
+
 
 import ProductDetail from './components/ProductDetails.jsx'; // Naya component, product detail ke liye
 
@@ -35,13 +42,22 @@ function App() {
               <Testimonial />
               <BannerSection />
               <FAQ />
+              <Contact/>
             </>
           }
         />
 
-        {/* Product detail page */}
+    
         <Route path="/" element={<Products />} />
         <Route path="/product/:productId" element={<ProductDetail />} />
+        <Route path="/About" element={<AboutPage />} />
+        <Route path="/Service" element={<Service />} />
+        <Route path="/Contact" element={<Contact />} />
+        <Route path="/Gallery" element={<Gallery />} />
+
+
+
+
       </Routes>
 
       <Footer />

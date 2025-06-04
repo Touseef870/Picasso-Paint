@@ -39,6 +39,7 @@ const MainNavbar = () => {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex gap-6 items-center font-medium text-gray-700">
+
           {navItems.map((item) => (
             <li key={item.path}>
               <Link
