@@ -39,12 +39,18 @@ const MainNavbar = () => {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex gap-6 items-center font-medium text-gray-700">
-          <li className="hover:text-[#da2a30] cursor-pointer">
-            <Link to="/">Home</Link>
-          </li>
-          <li className="hover:text-[#da2a30] cursor-pointer">
-            <Link to="/About">About</Link>
-          </li>
+
+          {navItems.map((item) => (
+            <li key={item.path}>
+              <Link
+                to={item.path}
+                className={`hover:text-teal-200 cursor-pointer transition-colors ${isActive(item.path, item.exact) ? 'text-teal-200 font-semibold' : ''
+                  }`}
+              >
+                {item.label}
+              </Link>
+            </li>
+          ))}
 
           {/* Dropdown Products */}
           <li
@@ -73,15 +79,15 @@ const MainNavbar = () => {
             )}
           </li>
 
-          <li className="hover:text-[#da2a30] cursor-pointer">
-            <Link to="/Service">Services</Link>
-          </li>
-          <li className="hover:text-[#da2a30] cursor-pointer">
-            <Link to="/Gallery">Gallery</Link>
-          </li>
-          <li className="hover:text-[#da2a30] cursor-pointer">
-            <Link to="/Contact">Contact</Link>
-          </li>
+          {/* Search Input */}
+          <div className="flex items-center border rounded-md px-2 py-1">
+            <input
+              type="text"
+              placeholder="Search..."
+              className="outline-none text-sm px-1 w-32"
+            />
+            <FaSearch className="text-gray-500 ml-1" />
+          </div>
         </ul>
 
         {/* Mobile Menu Button */}
