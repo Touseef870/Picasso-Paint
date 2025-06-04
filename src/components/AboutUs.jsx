@@ -95,7 +95,7 @@ const AboutUs = () => {
                             src="https://img.freepik.com/free-photo/young-builder-man-construction-uniform-safety-helmet-holding-paint-roller-looking-front-happy-positive-showing-thumbs-up-standing-green-wall_141793-64931.jpg"
                             alt="Factory Overview"
                             className="rounded-xl shadow-md ring-1 ring-gray-200 w-full h-96 object-cover"
-                        />
+                        />   
                     </div>
 
                 </div>
