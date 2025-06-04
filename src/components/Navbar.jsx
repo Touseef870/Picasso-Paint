@@ -21,7 +21,7 @@ const MainNavbar = () => {
             <Link to="/">Home</Link>
           </li>
           <li className="hover:text-[#da2a30] cursor-pointer">
-            <Link to="/about">About</Link>
+            <Link to="/About">About</Link>
           </li>
 
           {/* Dropdown Products */}
@@ -49,13 +49,13 @@ const MainNavbar = () => {
           </li>
 
           <li className="hover:text-[#da2a30] cursor-pointer">
-            <Link to="/services">Services</Link>
+            <Link to="/Service">Services</Link>
           </li>
           <li className="hover:text-[#da2a30] cursor-pointer">
-            <Link to="/gallery">Gallery</Link>
+            <Link to="/Gallery">Gallery</Link>
           </li>
           <li className="hover:text-[#da2a30] cursor-pointer">
-            <Link to="/contact">Contact</Link>
+            <Link to="/Contact">Contact</Link>
           </li>
         </ul>
 
