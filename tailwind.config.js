@@ -24,16 +24,16 @@ export default {
           foreground: 'hsl(var(--popover-foreground))'
         },
         primary: {
-          DEFAULT: '#129990',  // Your main primary color
-          light: '#90D1CA',   // Light variant
-          dark: '#096B68',    // Dark variant
-          subtle: '#E6F5F4'   // Extra light for backgrounds
+          DEFAULT: '#129990',
+          light: '#90D1CA',
+          dark: '#096B68',
+          subtle: '#E6F5F4'
         },
         secondary: {
-          DEFAULT: '#FFFBDE', // Your main secondary color
-          light: '#FFFEF5',   // Light variant
-          dark: '#FFF5B1',    // Dark variant
-          muted: '#FFFCEB'    // Muted variant
+          DEFAULT: '#FFFBDE',
+          light: '#FFFEF5',
+          dark: '#FFF5B1',
+          muted: '#FFFCEB'
         },
         muted: {
           DEFAULT: 'hsl(var(--muted))',
@@ -47,6 +47,16 @@ export default {
           DEFAULT: 'hsl(var(--destructive))',
           foreground: 'hsl(var(--destructive-foreground))'
         },
+        border: 'hsl(var(--border))', // Simplified from object to direct value
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        chart: {
+          '1': 'hsl(var(--chart-1))',
+          '2': 'hsl(var(--chart-2))',
+          '3': 'hsl(var(--chart-3))',
+          '4': 'hsl(var(--chart-4))',
+          '5': 'hsl(var(--chart-5))'
+        },
         teal: {
           50: '#E6F5F4',
           100: '#C0E5E3',
@@ -59,7 +69,6 @@ export default {
           800: '#05514F',
           900: '#023A39'
         },
-
         cream: {
           50: '#FFFEF5',
           100: '#FFFBDE',
@@ -71,18 +80,13 @@ export default {
           700: '#AA950D',
           800: '#807009',
           900: '#554B06'
-        },
-        border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
-        chart: {
-          '1': 'hsl(var(--chart-1))',
-          '2': 'hsl(var(--chart-2))',
-          '3': 'hsl(var(--chart-3))',
-          '4': 'hsl(var(--chart-4))',
-          '5': 'hsl(var(--chart-5))'
         }
-      }
+      },
+      // Add this new borderColor configuration
+      borderColor: ({ theme }) => ({
+        DEFAULT: theme('colors.border'),
+        ...theme('colors') // This spreads all your color definitions as border colors
+      })
     }
   },
   plugins: [require("tailwindcss-animate")],

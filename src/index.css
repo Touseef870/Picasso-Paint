@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Base Styles */
 body {
   background-image: url('../src/assets/images/bg-tablet-pattern.svg');
   background-repeat: no-repeat;
@@ -9,11 +10,13 @@ body {
   background-position: 90% -25%;
 }
 
+/* CTA Section Background */
 #cta {
   background-image: url('./assets/images/bg-simplify-section-desktop.svg');
   background-repeat: no-repeat;
 }
 
+/* Responsive for Mobile */
 @media (max-width: 576px) {
   body {
     background-position: 50px -50px;
@@ -30,7 +33,7 @@ body {
   cursor: pointer;
   width: 24px;
   height: 24px;
-  transition: all 0.25s;
+  transition: all 0.25s ease;
   position: relative;
 }
 
@@ -38,55 +41,51 @@ body {
 .hamburger-middle,
 .hamburger-bottom {
   position: absolute;
-  top: 0;
-  left: 0;
   width: 24px;
   height: 2px;
   background: #000;
-  transform: rotate(0);
-  transition: all 0.5s;
+  transition: all 0.5s ease;
+}
+
+.hamburger-top {
+  top: 0;
+  left: 0;
 }
 
 .hamburger-middle {
-  transform: translateY(7px);
+  top: 7px;
+  left: 0;
 }
 
 .hamburger-bottom {
-  transform: translateY(14px);
+  top: 14px;
+  left: 0;
 }
 
-.open {
-  transform: rotate(90deg);
-  transform: translateY(0px);
-}
-
+/* Open State */
 .open .hamburger-top {
-  transform: rotate(45deg) translateY(6px) translate(6px);
+  transform: rotate(45deg) translate(5px, 5px);
 }
 
 .open .hamburger-middle {
-  display: none;
+  opacity: 0;
 }
 
 .open .hamburger-bottom {
-  transform: rotate(-45deg) translateY(6px) translate(-6px);
+  transform: rotate(-45deg) translate(5px, -5px);
 }
-/* Hide scrollbar for all horizontal scroll */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
+
+/* Hide scrollbar */
 .no-scrollbar {
-  -ms-overflow-style: none; /* IE */
-  scrollbar-width: none; /* Firefox */
-}
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
+  -ms-overflow-style: none; /* IE & Edge */
   scrollbar-width: none; /* Firefox */
 }
 
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Tailwind Custom Variables */
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -115,6 +114,7 @@ body {
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
@@ -141,12 +141,11 @@ body {
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
-}
 
-@layer base {
   * {
-    @apply border-border;
+    @apply border-border/50; /* Changed from border-border to border-border/50 */
   }
+
   body {
     @apply bg-background text-foreground;
   }
