@@ -21,6 +21,7 @@ import Gallery from './pages/Gallery/Gallery.jsx';
 
 import ProductDetail from './components/ProductDetails.jsx'; // Naya component, product detail ke liye
 
+
 function App() {
   return (
     <BrowserRouter>
