@@ -16,6 +16,7 @@ import AboutPage from './pages/About/about.jsx';
 import Service from './pages/Service/Service.jsx'
 import Contact from './pages/Contact/Conact.jsx';
 import Gallery from './pages/Gallery/Gallery.jsx';
+import AllItems from './pages/Product/Product.jsx'; // Product page jahan products list hoti hai
 
 
 
@@ -50,6 +51,8 @@ function App() {
     
         <Route path="/" element={<Products />} />
         <Route path="/product/:productId" element={<ProductDetail />} />
+        <Route path="/AllItems" element={<AllItems />} />
+
         <Route path="/About" element={<AboutPage />} />
         <Route path="/Service" element={<Service />} />
         <Route path="/Contact" element={<Contact />} />

@@ -1,23 +1,36 @@
-import React, { useState } from 'react';
-import { colorPalettes } from "../constant/colors.js"
+import React, { useState, useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
+import { colorPalettes } from "../constant/colors.js";
 
 const ColorPalette = () => {
   const [selected, setSelected] = useState('KENT');
 
+  useEffect(() => {
+    AOS.init({ duration: 800, once: true });
+  }, []);
+
   return (
     <section className="py-24 bg-white text-center">
       <div className="max-w-screen-xl mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-6">Brighto Paints Color Palette</h2>
+        <h2 className="text-3xl font-bold mb-6" data-aos="fade-down">
+          Brighto Paints Color Palette
+        </h2>
 
         {/* Tabs */}
-        <div className="flex justify-center gap-6 mb-8 text-lg font-semibold">
+        <div
+          className="flex justify-center gap-6 mb-8 text-lg font-semibold"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
           {['KENT', 'TOPLAC', 'EVERNEW'].map((type) => (
             <button
               key={type}
               onClick={() => setSelected(type)}
-              className={`pb-1 border-b-2 transition-all duration-300 ${selected === type ? 'border-black text-black' : 'border-transparent text-gray-500'
-                }`}
+              className={`pb-1 border-b-2 transition-all duration-300 ${
+                selected === type ? 'border-black text-black' : 'border-transparent text-gray-500'
+              }`}
             >
               {type}
             </button>
@@ -25,7 +38,11 @@ const ColorPalette = () => {
         </div>
 
         {/* Color Dots */}
-        <div className="flex flex-wrap justify-center gap-6">
+        <div
+          className="flex flex-wrap justify-center gap-6"
+          data-aos="fade-up"
+          data-aos-delay="400"
+        >
           {colorPalettes[selected].map((color, index) => (
             <div
               key={index}

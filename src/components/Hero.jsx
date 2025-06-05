@@ -1,62 +1,40 @@
-// import React from 'react';
-// import { Swiper, SwiperSlide } from 'swiper/react';
-// import { Navigation, Autoplay } from 'swiper/modules';
-// import 'swiper/css';
-// import 'swiper/css/navigation';
-
-// import img1 from '../assets/banner1.jpg';
-// import img2 from '../assets/banner2.jpg';
-// import img3 from '../assets/banner3.webp';
-// import img4 from '../assets/banner4.jpg';
-
-// const ImageCarousel = () => {
-//   return (
-//     <div className="w-full">
-//       <Swiper
-//         modules={[Navigation, Autoplay]}
-//         slidesPerView={1} // Show only one image at a time
-//         navigation
-//         loop={true}
-//         autoplay={{ delay: 3000, disableOnInteraction: false }}
-//         className="w-full"
-//       >
-//         {[img1, img2, img3, img4].map((img, index) => (
-//           <SwiperSlide key={index}>
-//             <img
-//               src={img}
-//               alt={`Slide ${index + 1}`}
-//               className="w-full h-[70vh] object-cover"
-//             />
-//           </SwiperSlide>
-//         ))}
-//       </Swiper>
-//     </div>
-//   );
-// };
-
-// export default ImageCarousel;
+import React, { useEffect } from "react";
 import { ArrowRight, Sparkles } from "lucide-react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 import img1 from '../assets/hero1.avif';
 import img2 from '../assets/hero2.jpg';
 import img3 from '../assets/hero3.jpg';
 import img4 from '../assets/product2.png';
 
 export default function HeroSection() {
+  useEffect(() => {
+    AOS.init({ duration: 1200, once: true }); // once:true = animation runs once on scroll
+  }, []);
+
   return (
     <div className="w-full bg-gradient-to-br from-orange-50 to-pink-50 px-4 py-8 lg:py-16">
       <div className="max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
 
           {/* Content First Always */}
-          <div className="space-y-6 lg:space-y-8 order-1 lg:order-1">
+          <div
+            className="space-y-6 lg:space-y-8 order-1 lg:order-1"
+            data-aos="fade-right"
+          >
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-teal-50 text-black px-4 py-2 rounded-full text-sm font-medium">
+            <div
+              className="inline-flex items-center gap-2 bg-teal-50 text-black px-4 py-2 rounded-full text-sm font-medium"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
               <Sparkles className="w-4 h-4" />
               Premium Art-Grade Paints
             </div>
 
             {/* Main Heading */}
-            <div className="space-y-4">
+            <div className="space-y-4" data-aos="fade-up" data-aos-delay="400">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
                 Picasso Paint
                 <br />
@@ -70,13 +48,21 @@ export default function HeroSection() {
             </div>
 
             {/* Description */}
-            <p className="text-gray-600 text-lg lg:text-xl leading-relaxed max-w-lg">
+            <p
+              className="text-gray-600 text-lg lg:text-xl leading-relaxed max-w-lg"
+              data-aos="fade-up"
+              data-aos-delay="600"
+            >
               Discover a bold spectrum of colors designed for professionals and creators. Picasso Paint delivers
               eco-friendly, richly pigmented solutions for every artistic surface.
             </p>
 
             {/* Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div
+              className="flex flex-col sm:flex-row gap-4"
+              data-aos="fade-up"
+              data-aos-delay="800"
+            >
               <button className="bg-teal-500 hover:bg-teal-600 text-white px-8 py-4 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors">
                 Shop Premium Colors
                 <ArrowRight className="w-5 h-5" />
@@ -88,7 +74,11 @@ export default function HeroSection() {
           </div>
 
           {/* Images Second Always */}
-          <div className="order-2 lg:order-2">
+          <div
+            className="order-2 lg:order-2"
+            data-aos="fade-left"
+            data-aos-delay="400"
+          >
             <div className="grid grid-cols-2 gap-4 lg:gap-6">
               {/* Top Left Image */}
               <div className="relative group overflow-hidden rounded-2xl">

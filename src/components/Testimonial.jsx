@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 import Costumer1 from "../assets/costumer1.png";
 import Costumer2 from "../assets/costumer2.png";
 import Costumer3 from "../assets/costumer3.png";
@@ -29,7 +32,6 @@ const reviews = [
     content:
       "From start to finish, my experience with this company was exceptional. The attention to detail in the product design is evident, and the quality is unmatched. I especially appreciate how the company values customer feedback and continuously improves their offerings. The product works flawlessly, and the after-sales support was very helpful when I had a question about usage. This level of professionalism and dedication to customer satisfaction is rare these days. I wholeheartedly recommend this product to anyone looking for something dependable and well-crafted.",
   },
- 
 ];
 
 const Star = ({ filled }) => (
@@ -45,27 +47,44 @@ const Star = ({ filled }) => (
 export default function CustomerReviews() {
   const [activeIndex, setActiveIndex] = useState(0);
 
+  useEffect(() => {
+    AOS.init({ duration: 800, once: true });
+  }, []);
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-12 bg-white">
-      <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
+      <div
+        className="flex flex-col md:flex-row items-center md:items-start gap-8"
+        data-aos="fade-up"
+      >
         {/* Review Content */}
         <div className="flex-1 space-y-4 text-center md:text-left">
-          <h2 className="text-2xl sm:text-3xl font-semibold text-gray-800">Customer Review</h2>
-          <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
+          <h2 className="text-2xl sm:text-3xl font-semibold text-gray-800" data-aos="fade-down" data-aos-delay="100">
+            Customer Review
+          </h2>
+          <p className="text-gray-700 text-base sm:text-lg leading-relaxed" data-aos="fade-left" data-aos-delay="200">
             {reviews[activeIndex].content}
           </p>
-          <div className="flex justify-center md:justify-start space-x-1 sm:space-x-2">
+          <div
+            className="flex justify-center md:justify-start space-x-1 sm:space-x-2"
+            data-aos="fade-right"
+            data-aos-delay="300"
+          >
             {[...Array(5)].map((_, i) => (
               <Star key={i} filled={i < reviews[activeIndex].stars} />
             ))}
           </div>
-          <p className="text-lg sm:text-xl font-bold text-gray-900 mt-2">
+          <p className="text-lg sm:text-xl font-bold text-gray-900 mt-2" data-aos="zoom-in" data-aos-delay="400">
             - {reviews[activeIndex].name}
           </p>
         </div>
 
         {/* Customer Image */}
-        <div className="flex-shrink-0">
+        <div
+          className="flex-shrink-0"
+          data-aos="zoom-in"
+          data-aos-delay="500"
+        >
           <img
             src={reviews[activeIndex].image}
             alt={reviews[activeIndex].name}
@@ -74,36 +93,38 @@ export default function CustomerReviews() {
         </div>
       </div>
 
-{/* Horizontal Scroll Selector */}
-<div className="mt-10">
-  <div className="flex flex-wrap justify-center gap-6">
-    {reviews.map((review, idx) => (
-      <button
-        key={review.id}
-        onClick={() => setActiveIndex(idx)}
-        className={`flex flex-col items-center cursor-pointer transition-transform ${
-          idx === activeIndex ? "scale-110" : "scale-95 opacity-70"
-        }`}
+      {/* Horizontal Scroll Selector */}
+      <div
+        className="mt-10"
+        data-aos="fade-up"
+        data-aos-delay="600"
       >
-        <img
-          src={review.image}
-          alt={review.name}
-          className="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover border-2 border-indigo-400"
-        />
-        <p className="mt-2 text-sm font-semibold text-gray-700 text-center">
-          {review.name}
-        </p>
-        <div className="flex mt-1">
-          {[...Array(5)].map((_, i) => (
-            <Star key={i} filled={i < review.stars} />
+        <div className="flex flex-wrap justify-center gap-6">
+          {reviews.map((review, idx) => (
+            <button
+              key={review.id}
+              onClick={() => setActiveIndex(idx)}
+              className={`flex flex-col items-center cursor-pointer transition-transform ${
+                idx === activeIndex ? "scale-110" : "scale-95 opacity-70"
+              }`}
+            >
+              <img
+                src={review.image}
+                alt={review.name}
+                className="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover border-2 border-indigo-400"
+              />
+              <p className="mt-2 text-sm font-semibold text-gray-700 text-center">
+                {review.name}
+              </p>
+              <div className="flex mt-1">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} filled={i < review.stars} />
+                ))}
+              </div>
+            </button>
           ))}
         </div>
-      </button>
-    ))}
-  </div>
-</div>
-
-
+      </div>
     </div>
   );
 }
