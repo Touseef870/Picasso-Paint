@@ -43,7 +43,7 @@ function App() {
               <Testimonial />
               <BannerSection />
               <FAQ />
-              <Contact/>
+              {/* <Contact/> */}
             </>
           }
         />
