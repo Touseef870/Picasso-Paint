@@ -172,3 +172,18 @@ body {
   scrollbar-width: none;
   /* Firefox */
 }
+
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
