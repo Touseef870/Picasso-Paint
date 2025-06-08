@@ -115,20 +115,12 @@ export default function Component() {
                                             <RotateCcw className="w-3 h-3 sm:w-4 sm:h-4 sm:mr-1" />
                                             <span className="hidden sm:inline">Reset</span>
                                         </Button>
-                                        <Button variant="outline" size="sm" className="text-xs sm:text-sm px-2 sm:px-3">
-                                            <Download className="w-3 h-3 sm:w-4 sm:h-4 sm:mr-1" />
-                                            <span className="hidden sm:inline">Save</span>
-                                        </Button>
-                                        <Button variant="outline" size="sm" className="text-xs sm:text-sm px-2 sm:px-3">
-                                            <Share2 className="w-3 h-3 sm:w-4 sm:h-4 sm:mr-1" />
-                                            <span className="hidden sm:inline">Share</span>
-                                        </Button>
                                     </div>
                                 </div>
                             </CardHeader>
                             <CardContent className="p-2 sm:p-4 md:p-6">
                                 {/* Mobile Room Container */}
-                                <div className="relative w-full aspect-[4/3] sm:aspect-[5/3] bg-gradient-to-b from-gray-100 to-gray-200 rounded-xl overflow-hidden shadow-inner">
+                                <div className="relative w-full aspect-[4/3] sm:aspect-[5/3] lg:aspect-[16/9] bg-gradient-to-b from-gray-100 to-gray-200 rounded-xl overflow-hidden shadow-inner">
                                     <div className="absolute inset-0" style={{ perspective: "800px" }}>
                                         <div className="relative w-full h-full overflow-hidden">
                                             {/* Floor */}
@@ -151,7 +143,7 @@ export default function Component() {
 
                                             {/* Back Wall */}
                                             <motion.div
-                                                className="absolute top-[5%] left-[20%] right-[20%] h-[60%] cursor-pointer border border-gray-200"
+                                                className="absolute top-[5%] left-[15%] right-[15%] sm:left-[20%] sm:right-[20%] h-[60%] cursor-pointer border border-gray-200"
                                                 style={{
                                                     backgroundColor: wallColors.back,
                                                     boxShadow: "0 5px 20px rgba(0,0,0,0.1)",
@@ -169,7 +161,7 @@ export default function Component() {
                                                 }
                                             >
                                                 {/* Window - Responsive */}
-                                                <div className="absolute top-[15%] right-[10%] w-[35%] h-[40%] border-2 sm:border-4 border-white rounded-sm shadow-lg overflow-hidden">
+                                                <div className="absolute top-[15%] right-[5%] sm:right-[10%] w-[40%] sm:w-[35%] h-[40%] border-2 sm:border-4 border-white rounded-sm shadow-lg overflow-hidden">
                                                     <div className="absolute inset-0 bg-gradient-to-b from-sky-300 to-sky-100">
                                                         <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-0.5 sm:gap-1 p-0.5 sm:p-1">
                                                             <div className="border border-white/50 bg-sky-200/30 rounded-sm"></div>
@@ -182,14 +174,14 @@ export default function Component() {
                                                 </div>
 
                                                 {/* Picture Frame */}
-                                                <div className="absolute bottom-[25%] left-[15%] w-[25%] h-[30%] bg-amber-50 border-2 sm:border-4 border-amber-800 shadow-md">
+                                                <div className="absolute bottom-[25%] left-[10%] sm:left-[15%] w-[30%] sm:w-[25%] h-[30%] bg-amber-50 border-2 sm:border-4 border-amber-800 shadow-md">
                                                     <div className="absolute inset-1 sm:inset-2 bg-green-200"></div>
                                                 </div>
                                             </motion.div>
 
                                             {/* Left Wall */}
                                             <motion.div
-                                                className="absolute top-[5%] left-0 w-[20%] h-[60%] cursor-pointer border border-gray-200"
+                                                className="absolute top-[5%] left-0 w-[15%] sm:w-[20%] h-[60%] cursor-pointer border border-gray-200"
                                                 style={{
                                                     backgroundColor: wallColors.left,
                                                     transform: "rotateY(45deg)",
@@ -208,14 +200,14 @@ export default function Component() {
                                                         : {}
                                                 }
                                             >
-                                                <div className="absolute bottom-[30%] right-[15%] w-[20%] h-[10%] bg-white border border-gray-300 rounded-sm shadow-sm">
+                                                <div className="absolute bottom-[30%] right-[10%] sm:right-[15%] w-[25%] sm:w-[20%] h-[10%] bg-white border border-gray-300 rounded-sm shadow-sm">
                                                     <div className="absolute inset-0.5 sm:inset-1 bg-gray-100 rounded-sm"></div>
                                                 </div>
                                             </motion.div>
 
                                             {/* Right Wall */}
                                             <motion.div
-                                                className="absolute top-[5%] right-0 w-[20%] h-[60%] cursor-pointer border border-gray-200"
+                                                className="absolute top-[5%] right-0 w-[15%] sm:w-[20%] h-[60%] cursor-pointer border border-gray-200"
                                                 style={{
                                                     backgroundColor: wallColors.right,
                                                     transform: "rotateY(-45deg)",
@@ -234,7 +226,7 @@ export default function Component() {
                                                         : {}
                                                 }
                                             >
-                                                <div className="absolute top-[25%] left-[10%] w-[70%] h-[6%] bg-amber-800 rounded-sm shadow-md">
+                                                <div className="absolute top-[25%] left-[5%] sm:left-[10%] w-[80%] sm:w-[70%] h-[6%] bg-amber-800 rounded-sm shadow-md">
                                                     <div className="absolute top-[-50%] left-[10%] right-[10%] h-[50%] bg-amber-700 rounded-sm"></div>
                                                 </div>
                                             </motion.div>
@@ -244,14 +236,14 @@ export default function Component() {
                                                 className="absolute top-0 left-0 right-0 h-[8%] bg-white border-b border-gray-200"
                                                 style={{ boxShadow: "0 5px 15px rgba(0,0,0,0.1)" }}
                                             >
-                                                <div className="absolute top-[50%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 sm:w-8 sm:h-8 bg-yellow-100 rounded-full border-2 border-yellow-200 shadow-lg">
+                                                <div className="absolute top-[50%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 sm:w-6 sm:h-6 lg:w-8 lg:h-8 bg-yellow-100 rounded-full border-2 border-yellow-200 shadow-lg">
                                                     <div className="absolute inset-1 bg-yellow-50 rounded-full"></div>
                                                 </div>
                                             </div>
 
                                             {/* Furniture - Responsive */}
                                             <div
-                                                className="absolute bottom-[35%] left-[25%] right-[25%] h-[12%] bg-gray-700 rounded-md shadow-lg"
+                                                className="absolute bottom-[35%] left-[20%] right-[20%] sm:left-[25%] sm:right-[25%] h-[12%] bg-gray-700 rounded-md shadow-lg"
                                                 style={{
                                                     filter: "blur(0.5px)",
                                                     transform: "perspective(500px) rotateX(10deg)",
@@ -266,7 +258,7 @@ export default function Component() {
                                             </div>
 
                                             <div
-                                                className="absolute bottom-[35%] left-[35%] right-[35%] h-[6%] bg-amber-800 rounded-sm shadow-md"
+                                                className="absolute bottom-[35%] left-[30%] right-[30%] sm:left-[35%] sm:right-[35%] h-[6%] bg-amber-800 rounded-sm shadow-md"
                                                 style={{
                                                     filter: "blur(0.5px)",
                                                     transform: "perspective(500px) rotateX(15deg)",
@@ -277,7 +269,7 @@ export default function Component() {
                                             </div>
 
                                             <div
-                                                className="absolute bottom-[35%] right-[22%] w-[4%] h-[25%] bg-gray-800"
+                                                className="absolute bottom-[35%] right-[18%] sm:right-[22%] w-[4%] h-[25%] bg-gray-800"
                                                 style={{ filter: "blur(0.5px)" }}
                                             >
                                                 <div className="absolute top-0 left-[-100%] right-[-100%] h-[25%] bg-amber-100 rounded-full border border-amber-200"></div>
@@ -469,14 +461,7 @@ export default function Component() {
                                                 <RotateCcw className="w-4 h-4 mr-1" />
                                                 Reset
                                             </Button>
-                                            <Button variant="outline" size="sm">
-                                                <Download className="w-4 h-4 mr-1" />
-                                                Save
-                                            </Button>
-                                            <Button variant="outline" size="sm">
-                                                <Share2 className="w-4 h-4 mr-1" />
-                                                Share
-                                            </Button>
+
                                         </div>
                                     </div>
                                 </CardHeader>

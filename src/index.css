@@ -70,14 +70,18 @@
   }
 }
 
+/* html{
+  scroll-behavior: smooth;
+  height: 100%;
+} */
 /* Base Styles */
 body {
   background-image: url('../src/assets/images/bg-tablet-pattern.svg');
   background-repeat: no-repeat;
   background-size: 800px;
   background-position: 90% -25%;
+  height: 100%;
 }
-
 /* CTA Section Background */
 #cta {
   background-image: url('./assets/images/bg-simplify-section-desktop.svg');

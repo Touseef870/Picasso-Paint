@@ -27,7 +27,7 @@ const ProductDetail = () => {
   const otherProducts = products.filter((p) => p.id !== product.id);
 
   return (
-    <section className="max-w-7xl mx-auto px-16 py-20">
+    <section className="max-w-7xl mx-auto px-6 py-10">
       <button className="mb-8 px-4 py-2 rounded" onClick={() => navigate("/")}>
         ← Back to Products
       </button>

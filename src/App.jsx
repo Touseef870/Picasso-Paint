@@ -29,6 +29,8 @@ function App() {
       <TopNavbar />
       <Navbar />
 
+      <main className='relative z-0 '>
+
       <Routes>
         {/* Home page route jahan saare sections hain */}
         <Route
@@ -43,12 +45,12 @@ function App() {
               <Testimonial />
               <BannerSection />
               <FAQ />
-              <Contact/>
+              <Contact />
             </>
           }
         />
 
-    
+
         <Route path="/" element={<Products />} />
         <Route path="/product/:productId" element={<ProductDetail />} />
         <Route path="/AllItems" element={<AllItems />} />
@@ -62,6 +64,9 @@ function App() {
 
 
       </Routes>
+
+      </main>
+
 
       <Footer />
     </BrowserRouter>
